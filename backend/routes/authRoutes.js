@@ -86,10 +86,16 @@ router.get("/students/:batchId", async (req, res) => {
 // Fetch student profile
 router.get("/student/:studentId", async (req, res) => {
   try {
-    const student = await Student.findById(req.params.studentId);
-    if (!student) return res.status(404).json({ message: "Student not found" });
+    const student = await Student.findById(req.params.studentId).populate(
+      "marks.testId", // Populate test details
+      "testName" // Only fetch the testName field
+    );
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
     res.json(student);
   } catch (error) {
+    console.error("Error fetching student profile:", error);
     res.status(500).json({ message: "Error fetching student profile", error });
   }
 });

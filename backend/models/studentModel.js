@@ -10,7 +10,7 @@ const studentSchema = new mongoose.Schema({
   marks: [
     {
       testId: { type: mongoose.Schema.Types.ObjectId, ref: "Test" },
-     // testName: { type: String, required: true }
+     //testName: { type: mongoose.Schema.Types.ObjectId, ref: "Test" },
       score: { type: Number, default: 0 },
     },
   ],

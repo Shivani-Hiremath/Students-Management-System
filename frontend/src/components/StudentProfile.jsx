@@ -1,3 +1,4 @@
+// filepath: d:\Students-Management-System-main\frontend\src\components\StudentProfile.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -35,8 +36,8 @@ const StudentProfile = () => {
       ) : (
         <ul>
           {student.marks.map((mark) => (
-            <li key={mark.testId}>
-              Test ID: {mark.testId} - Score: {mark.score}
+            <li key={mark.testId._id}>
+              <strong>Test Name:</strong> {mark.testId.testName} - <strong>Score:</strong> {mark.score}
             </li>
           ))}
         </ul>
